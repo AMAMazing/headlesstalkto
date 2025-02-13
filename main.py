@@ -17,7 +17,8 @@ chrome_options.add_argument("--no-sandbox")
 chrome_options.add_argument("--disable-dev-shm-usage")
 
 # ✅ Start ChromeDriver
-service = Service(CHROMEDRIVER_PATH)
+service = Service("/usr/local/bin/chromedriver")
+
 driver = webdriver.Chrome(service=service, options=chrome_options)
 
 # ✅ Open AI Studio
@@ -49,10 +50,6 @@ try:
                     print(f"❌ Skipping cookie - Domain mismatch: {cookie_domain} ≠ {driver.current_url}")
 
     print("✅ Cookies loaded successfully!")
-
-except FileNotFoundError:
-    print("❌ cookies.txt not found! Please make sure it's in the same folder.")
-
 
 except FileNotFoundError:
     print("❌ cookies.txt not found! Please make sure it's in the same folder.")
